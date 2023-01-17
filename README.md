@@ -2,6 +2,7 @@
 ## Must have 
     - Nodejs
     - Composer
+    - Laravel
 
 
 #### Create a database on your local machine, the database file in this project is custom_auth. If you name it something other than custom_auth, make sure to change it in the env file as well.
