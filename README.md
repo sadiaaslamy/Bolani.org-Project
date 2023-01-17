@@ -10,6 +10,6 @@
 - npm install
 - npm run dev
 - Composer update or composer install
-- Php artisan storage:link
 - Php artisan migrate
+- Php artisan storage:link
 - Php artisan serve
