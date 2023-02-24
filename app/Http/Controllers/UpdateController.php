@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Fund;
 use App\Models\Update;
 use Illuminate\Http\Request;
 
@@ -19,9 +20,11 @@ class UpdateController extends Controller
 
     public function index()
     {
-        $updates = Update::latest()->paginate(3);
+        $updates = Update::whereHas('fund',function($query){
+            $query->whereUserId(auth()->user()->id);
+        })->latest('id')->paginate(3);
         return view('updates.index', compact('updates'))->with(request()->input('page'));
-     
+
     }
 
     /**
@@ -29,9 +32,11 @@ class UpdateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Fund $fund)
     {
-        return view('updates.create');
+        if($fund->user->id !==auth()->user()->id)
+            abort(403);
+        return view('updates.create',compact('fund'));
     }
 
     /**
@@ -40,8 +45,13 @@ class UpdateController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,Fund $fund)
     {
+
+        if($fund->user->id !==auth()->user()->id)
+            abort(403);
+
+            // dd($fund);
         $data= $request->validate([
             'description' => 'required',
             'image' => 'required',
@@ -52,7 +62,8 @@ class UpdateController extends Controller
             $request->file('image')->storeAs('public/images/', $file);
             $data['image']=$file;
         }
-        Update::create($data);
+        // Update::create($data);
+        $fund->hasUpdate()->create($data);
         return redirect()->route('updates.index')->with('success', 'Fund News created successfuly');
 
     }
@@ -100,7 +111,7 @@ class UpdateController extends Controller
         }
         $update->update($request->all());
         return redirect()->route('updates.index')->with('success', 'Fund News Updated successfuly');
-        
+
 
     }
 

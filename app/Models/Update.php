@@ -11,11 +11,12 @@ class Update extends Model
     protected $table = 'updates';
     protected $fillable =[
         'description',
-        'image'
+        'image',
+        'update_id'
     ];
 
     //connect two tables fund with update
-    // public function fund(){
-    //     return $this->belongsTo(Fund::class);
-    // }
+    public function fund(){
+        return $this->belongsTo(Fund::class);
+    }
 }

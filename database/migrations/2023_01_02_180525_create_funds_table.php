@@ -21,10 +21,10 @@ class CreateFundsTable extends Migration
             $table->string('file_path');
             
             //create connection
-            // $table->foreignId('user_id')
-            // ->constrained('users')
-            // ->cascadeOnDelete()
-            // ->cascadeOnUpdate();
+             $table->foreignId('user_id')
+             ->constrained('users')
+             ->cascadeOnDelete()
+             ->cascadeOnUpdate();
 
             $table->timestamps();
         });

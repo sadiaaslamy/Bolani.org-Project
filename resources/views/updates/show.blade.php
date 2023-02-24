@@ -35,7 +35,7 @@
             <p class="text-gray-900 font-semibold text-base md:text-xl text-justify">Thank you to all who have made donations and shared. It is so nice to see so much support</p>
         </div>
         <div class="px-12 py-6 md:w-1/2 flex flex-col items-start text-gray-900">
-            <a class="flex mx-auto mr-10 mb-5 text-gray-900 border border-black py-1 px-4 focus:outline-none rounded-lg" href="{{ route('updates.index') }}"><button >Edit Your Fund</button></a>
+            <a class="flex mx-auto mr-10 mb-5 text-gray-900 border border-black py-1 px-4 focus:outline-none rounded-lg" href="{{ route('updates.edit',$update->id) }}"><button >Edit Your Fund</button></a>
             <p class="leading-relaxed text-justify text-base md:text-xl text-gray-900">{{ $update->description }}</p>
         </div>
       </div>

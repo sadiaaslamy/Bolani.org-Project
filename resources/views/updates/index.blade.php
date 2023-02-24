@@ -23,18 +23,18 @@
                   <div class="flex items-center flex-wrap ">
                     <form action="{{ route('updates.destroy',$update->id) }}" method="POST">
                         <div class="flex flex-wrap">
-                            <a href="{{ route('updates.show',$update->id) }}" class="inline-flex text-white bg-green-500 border-0 px-4 py-2 mx-1 focus:outline-none hover:bg-green-600 rounded text-base">Show</a>
-                          <a  href="{{ route('updates.edit',$update->id) }}" class="inline-flex text-white bg-yellow-500 border-0 px-4 py-2 mx-1 focus:outline-none hover:bg-yellow-600 rounded text-base">Edit</a>
+                            <a href="{{ route('updates.show',$update->id) }}" class="inline-flex text-gray-900 border-2 border-yellow-500 rounded px-2 py-1 mx-1 focus:outline-none text-sm">Show</a>
+                          <a  href="{{ route('updates.edit',$update->id) }}" class="inline-flex text-gray-900 border-2 border-yellow-500 rounded px-2 py-1 mx-1 focus:outline-none text-sm">Edit</a>
                           @csrf
                           @method('DELETE')
-                          <button class="inline-flex text-white bg-red-500 border-0 px-4 py-2 mx-1 focus:outline-none hover:bg-red-600 rounded text-base">Delete</button>
+                          <button class="inline-flex text-gray-900 border-2 border-yellow-500 rounded px-2 py-1 mx-1 focus:outline-none text-sm">Delete</button>
                           </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            @endforeach
-          </div>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+               @endforeach
+             </div>
           <div class="my-3">
             {{ $updates->links() }}
           </div>

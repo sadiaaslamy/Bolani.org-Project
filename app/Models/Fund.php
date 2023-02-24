@@ -13,15 +13,17 @@ class Fund extends Model
         'title',
         'goal',
         'description',
-        'file_path'
+        'file_path',
+        'user_id'
     ];
-    
-    //connect tables
-    // public function user(){
-    //     return $this->belongsTo(User::class);
-    // }
 
-    // public function updates(){
-    //     return $this->belongsTo(Update::class);
-    // }
+    //connect tables
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
+    public function hasUpdate(){
+        return $this->hasOne(Update::class);
+    }
 }
+

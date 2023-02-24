@@ -16,18 +16,23 @@
                 <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="{{ asset('storage/images/'.$fund->file_path)}}" alt="blog">
 
                 <div class="p-6">
-                  <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">Goal:${{ $fund->goal }}</h2>
+                  <div class="flex flex-wrap justify-between">
+                    <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">Goal:${{ $fund->goal }}</h2>
+                  <a href="{{ route('funds.update.create',$fund->id) }}" class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">Add update</a>
+                  </div>
                   <h1 class="title-font text-lg font-medium text-gray-900 mb-3">{{ $fund->title }}</h1>
                   <p class="leading-relaxed mb-3">{{ $fund->description }}</p>
                   <div class="flex items-center flex-wrap ">
                     <form action="{{ route('funds.destroy',$fund->id) }}" method="POST">
                         <div class="flex flex-wrap">
-                          <a href="{{ route('funds.show',$fund->id) }}" class="inline-flex text-white bg-green-500 border-0 px-4 py-2 mx-1 focus:outline-none hover:bg-green-600 rounded text-lg">Show</a>
-                        <a  href="{{ route('funds.edit',$fund->id) }}" class="inline-flex text-white bg-yellow-500 border-0 px-4 py-2 mx-1 focus:outline-none hover:bg-yellow-600 rounded text-lg">Edit</a>
-                        @csrf
+                          
+                          <a href="{{ route('funds.show',$fund->id) }}" class="inline-flex text-gray-900 border-2 border-yellow-500  rounded  px-2 py-1 mx-1 focus:outline-none  text-sm">Show</a>
+                          <a  href="{{ route('funds.edit',$fund->id) }}" class="inline-flex text-gray-900 border-2 border-yellow-500  rounded px-2 py-1 mx-1 focus:outline-none  text-sm">Edit</a>
+                          @csrf
                         @method('DELETE')
-                        <button class="inline-flex text-white bg-red-500 border-0 px-4 py-2 mx-1 focus:outline-none hover:bg-red-600 rounded text-lg">Delete</button>
+                        <button class="inline-flex text-gray-900 border-2 border-yellow-500 rounded px-2 py-1 mx-1 focus:outline-none text-sm">Delete</button>
                         </div>
+                      
                     </form>
                   </div>
                 </div>

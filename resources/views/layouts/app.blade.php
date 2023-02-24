@@ -48,9 +48,6 @@
                     <a href="/funds" class="block px-4 py-2  hover:bg-gray-100">Your Funds</a>
                   </li>
                   <li>
-                    <a href="/updates/create" class="block px-4 py-2  hover:bg-gray-100">latest news</a>
-                  </li>
-                  <li>
                     <a href="/updates" class="block px-4 py-2 hover:bg-gray-100">Update news</a>
                   </li>
                 </ul>

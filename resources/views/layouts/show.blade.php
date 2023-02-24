@@ -14,7 +14,7 @@
                     Total Goal: <span class="title-font font-bold text-gray-900 text-base md:text-xl">${{ $fund->goal }}</span>
                 </h3>
                 <div class="flex justify-between my-5 md:my-0 md:justify-start">
-                  <a class="mx-1 text-xs text-gray-900 border border-black py-1 px-2 rounded md:text-xl">Updates</a>
+                  <a class="mx-1 text-xs text-gray-900 border border-black py-1 px-2 rounded md:text-xl" href="{{route('updates.show',$fund->hasUpdate->id)}}">Updates</a>
                    <a href="/payment" class="mx-1 text-xs text-gray-900 bg-yellow-500 border border-yellow-500 py-1  hover:bg-yellow-400 rounded px-6 md:text-xl">Donate</a>
                 </div>
               </div>

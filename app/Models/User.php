@@ -13,9 +13,9 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
      
     //connect tables
-    // public function funds(){
-    //     return $this->hasMany(Fund::class);
-    // }
+    public function funds(){
+        return $this->hasMany(Fund::class);
+    }
 
     /**
      * The attributes that are mass assignable.

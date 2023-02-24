@@ -18,26 +18,29 @@
                 @endforeach
               </ul>
             </div>
-          </div>    
+          </div>
         @endif
-    <form action="{{ route('updates.store') }}" method="POST" enctype="multipart/form-data">
-        @csrf 
+    <form action="{{ route('funds.update.store',$fund) }}" method="POST" enctype="multipart/form-data">
+        @csrf
         <div class="flex flex-col md:flex-wrap  h-4/6">
             <div class="px-4 font-semibold ">
                 <div class="rounded-lg h-96">
                     <label for="description" class="leading-10 text-sm text-black mb-5">Description</label>
                     <textarea id="description" name="description" placeholder="Write here" class="w-full h-1/2 p-3 rounded border border-gray-600 focus:border-gray-500 focus:ring-2 focus:ring-gray-200  text-base outline-none text-gray-700 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                    @error('description')
+                        <p class="text-red-500">{{$message}}</p>
+                    @enderror
                 </div>
             </div>
 
             <div class="px-4 font-semibold">
                 <div class="rounded-lg h-96">
                     <label for="photo_update" class="leading-10 text-sm text-black mb-5">Update Photo</label>
-                    <div id="photo_update" name="photo_update" placeholder="Write here" class="py-7 p-3 h-1/2 flex justify-center w-full  rounded border border-gray-600 focus:border-gray-500 focus:ring-2 focus:ring-gray-200  text-base outline-none text-gray-700 resize-none leading-6 transition-colors duration-200 ease-in-out"> 
+                    <div id="photo_update" name="photo_update" placeholder="Write here" class="py-7 p-3 h-1/2 flex justify-center w-full  rounded border border-gray-600 focus:border-gray-500 focus:ring-2 focus:ring-gray-200  text-base outline-none text-gray-700 resize-none leading-6 transition-colors duration-200 ease-in-out">
                         <input type="file" id="image" name="image" accept="image/*">
                     </div>
                     <div class="grid justify-items-end mt-5">
-                        <button class=" bg-yellow-500 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-400 rounded-lg">Create</button>
+                        <button class=" bg-yellow-500 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-400 rounded-lg" type="submit">Create inf</button>
                     </div>
                   </div>
                </div>

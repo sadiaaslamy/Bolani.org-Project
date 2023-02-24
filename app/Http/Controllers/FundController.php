@@ -20,8 +20,8 @@ class FundController extends Controller
 
     public function index()
     {
-        $funds = Fund::latest()->paginate(3);
-         
+        $funds = Fund::whereUserId(auth()->user()->id)->latest()->paginate(3);
+
         return view('layouts.index', compact('funds'))->with(request()->input('page'));
     }
 
@@ -32,7 +32,7 @@ class FundController extends Controller
      */
     public function create()
     {
-        
+
         return view('layouts.create');
     }
 
@@ -50,20 +50,22 @@ class FundController extends Controller
             'description' => 'required',
             'file_path' => 'required',
         ]);
-        
+
         $fundImg = 'file_path';
 
         if($request->hasFile($fundImg)){
             $file = $request->file($fundImg)->getClientOriginalName();
             $request->file($fundImg)->storeAs('public/images/', $file);
             $data[$fundImg]=$file;
-               
+
         }
 
+        $data['user_id']=auth()->user()->id;
+        // dd(auth()->user()->id);
         Fund::create($data);
         return redirect()->route('funds.index')->with('success', 'Fund created successfuly');
     }
-    
+
     /**
      * Display the specified resource.
      *
@@ -72,6 +74,8 @@ class FundController extends Controller
      */
     public function show(Fund $fund)
     {
+        if($fund->user->id!==auth()->user()->id)
+            abort(403);
         return view('layouts.show', compact('fund'));
     }
 
@@ -83,6 +87,9 @@ class FundController extends Controller
      */
     public function edit(Fund $fund)
     {
+        if($fund->user->id!==auth()->user()->id){
+            abort(403);
+        }
         return view('layouts.edit',compact('fund'));
     }
 
@@ -95,23 +102,26 @@ class FundController extends Controller
      */
     public function update(Request $request, Fund $fund)
     {
+        if($fund->user->id!==auth()->user()->id){
+            abort(403);
+        }
         $data= $request->validate([
             'title' =>'required',
             'goal' =>'required',
             'description' => 'required',
             'file_path' => 'required',
         ]);
-        
+
         if($request->hasFile('file_path')){
             $file = $request->file('file_path')->getClientOriginalName();
             $request->file('file_path')->storeAs('public/images/', $file);
             $data['file_path']=$file;
-               
+
         }
 
         $fund->update($request->all());
         return redirect()->route('funds.index')->with('success', 'Fund Updated successfuly');
-    
+
     }
 
     /**
@@ -124,6 +134,7 @@ class FundController extends Controller
     {
         $fund->delete();
         return redirect()->route('funds.index')->with('success', 'Fund deleted successfuly');
-    
+
     }
 }
+

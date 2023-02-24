@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
 <!--test second commit-->
-<h1>Test comment</h1>
 <!--main-->
 <section class="text-gray-600 body-font bg-amber-50 p-10">
     <div class="container flex flex-wrap  py-10 w-5/6 mx-auto justify-center md:justify-between items-center">
@@ -50,58 +49,25 @@
       <h1 class="text-xl md:text-3xl font-semibold text-gray-900">Browse Humanitarian Project</h1>
      </div>
       <div class="flex flex-wrap -m-4">
+        @forelse ($funds as $fund )
         <div class="p-4 md:w-1/3">
           <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-            <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="https://dummyimage.com/720x400" alt="blog">
+            <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="{{ asset('storage/images/'.$fund->file_path)}}" alt="blog">
             <div class="p-6">
-              <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Title</h1>
-              <p class="leading-relaxed mb-3">Description</p>
+              <h1 class="title-font text-lg font-medium text-gray-900 mb-3">{{ $fund->title }}</h1>
+              <p class="leading-relaxed mb-3">{{ $fund->description }}</p>
               <div class="flex items-center flex-wrap ">
-                <a class="text-yellow-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
-                  <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M5 12h14"></path>
-                    <path d="M12 5l7 7-7 7"></path>
-                  </svg>
-                </a>
+                <a class="text-yellow-500 inline-flex items-center md:mb-2 lg:mb-0" href="{{route('funds.show',$fund)}}">Learn More</a>
               </div>
             </div>
           </div>
         </div>
-        <div class="p-4 md:w-1/3">
-          <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-            <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="https://dummyimage.com/720x400" alt="blog">
-            <div class="p-6">
-              <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Title</h1>
-              <p class="leading-relaxed mb-3">Description</p>
-              <div class="flex items-center flex-wrap ">
-                <a class="text-yellow-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
-                  <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M5 12h14"></path>
-                    <path d="M12 5l7 7-7 7"></path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="p-4 md:w-1/3">
-          <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-            <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="https://dummyimage.com/720x400" alt="blog">
-            <div class="p-6">
-              <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Title</h1>
-              <p class="leading-relaxed mb-3">Description</p>
-              <div class="flex items-center flex-wrap ">
-                <a class="text-yellow-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
-                  <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M5 12h14"></path>
-                    <path d="M12 5l7 7-7 7"></path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
+       
+        @empty
+
+        @endforelse
       </div>
+     
     </div>
 </section>
 <!-- end Fund -->
@@ -115,7 +81,7 @@
     <div class="text-left ">
       <h1 class="title-font text-xl md:text-3xl mb-4 font-semibold text-gray-900 underline underline-offset-8 items-center decoration-yellow-400 decoration-4  py-5 px-5">About</h1>
     </div>
-      <p class="mb-12 leading-relaxed px-5 text-justify text-lg font-light text-gray-900 md:text-2xl"> 
+      <p class="mb-12 leading-relaxed px-5 text-justify text-lg font-light text-gray-900 md:text-2xl">
           Street children in Kabul are going home hungry. Their sources of revenue are draining and they have to work harder than before in tough cold days of winter to earn money to feed their family and themselves.
           We are planning on donating bolani's to the street kids of Dashte-Barchi of Kabul and we identified the street kids in the area and along their families. Five of our volunteers are living in the area, and we were able to do this assessment first hand.
           As each bolani is 10 Afghani a piece, three bolani becomes 30 Afghani and in a day, we will need 1500 Afghani for 50 children. The montly cost of this becomes 45000 Afghani which becomes $CAD610, which is our fundraising goal.
@@ -143,7 +109,7 @@
       <div class="relative mb-4">
         <label for="number" class="leading-7 text-gray-900">How many Bolani do you want to Donate?</label>
         <input type="text" id="number" name="number" placeholder="#Enter the number of Bolani here" class="w-full bg-yellow-50 rounded border border-black-300 focus:border-yellow-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-      </div> 
+      </div>
       <p class="text-center pb-3">__________________<small>OR</small>____________________</p>
       <div class="relative mb-4">
         <label for="amount" class="leading-7 text-gray-900">How much do you want to Donate?</label>
@@ -299,4 +265,4 @@
 <!--endBolaniContact-->
 @endsection
 
-  
+

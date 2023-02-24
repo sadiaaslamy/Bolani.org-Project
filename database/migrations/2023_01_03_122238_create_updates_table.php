@@ -19,10 +19,10 @@ class CreateUpdatesTable extends Migration
             $table->string('image');
 
             //create connection
-            // $table->foreignId('fund_id')
-            // ->constrained('funds')
-            // ->cascadeOnDelete()
-            // ->cascadeOnUpdate();
+             $table->foreignId('fund_id')
+             ->constrained('funds')
+             ->cascadeOnDelete()
+             ->cascadeOnUpdate();
             $table->timestamps();
         });
     }

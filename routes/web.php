@@ -1,10 +1,10 @@
 <?php
-
 use App\Http\Controllers\ForgotPasswordController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FundController;
+use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\UpdateController;
 
@@ -18,11 +18,7 @@ use App\Http\Controllers\UpdateController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/',[LandingPageController::class,'index'])->name('welcome');
 
 Route::group(['middleware' => 'guest'], function() {
     Route::get('login', [AuthController::class, 'index'])->name('login');
@@ -35,8 +31,6 @@ Route::group(['middleware' => 'guest'], function() {
 Route::group(['middleware' => 'auth'],function(){
     Route::get('home', [AuthController::class, 'home'])->name('home');
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
-   
-
 });
 
 Route::get('forgot-password',[ForgotPasswordController::class, 'showForgotPasswordForm'])->name('forgot.password.get');
@@ -48,14 +42,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('funds', FundController::class);
 Route::resource('updates', UpdateController::class);
+Route::get('/updates/{fund}/info',[UpdateController::class,'create'])->name('funds.update.create');
+Route::post('/updates/{fund}/info',[UpdateController::class,'store'])->name('funds.update.store');
 
 Route::get('/contact-us',[ContactController::class,'contact']);
 Route::post('/send-message',[ContactController::class, 'sendEmail'])->name('contact.send');
 
-
-
 // adding stripe functionality to payment controller
-
 Route::get('/payment',  [PaymentController::class, 'index']);
 Route::post('/payment', [PaymentController::class, 'donet']);
 
