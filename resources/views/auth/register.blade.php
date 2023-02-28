@@ -10,6 +10,11 @@
     <div class="lg:w-2/6 md:w-1/2 bg-amber-50 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
       <form action="{{ route('register') }}" method="POST">
         @csrf
+        @if(Session::has('message'))
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+              <span class="block sm:inline">{{ Session::get('message') }}</span>
+            </div>      
+          @endif
         <div class="relative mb-4">
             <label for="name" class="leading-7 text-md text-gray-900">Full Name</label>
             <input type="text" id="name" name="name" class="w-full  bg-yellow-50 rounded border border-gray-600 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" placeholder="name">

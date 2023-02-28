@@ -32,15 +32,16 @@ class AuthController extends Controller
     public function register_view()
     {
         return view('auth.register');
+        
     }
 
     public function register(Request $request){
-        $request->validate([
+        $credentials= $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
         ]);
-
+        
         User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -50,8 +51,9 @@ class AuthController extends Controller
         if(Auth::attempt($request->only('email','password'))){
             return redirect('home');
         }
+    
+         return redirect('register')->withError('Error');
         
-        return redirect('register')->withError('Error');
     }
 
     public function home(){
@@ -62,8 +64,6 @@ class AuthController extends Controller
         Session::flush();
         Auth::logout();
         return redirect('/');
-
     }
-
 }
 
