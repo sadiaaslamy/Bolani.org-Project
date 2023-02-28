@@ -1,17 +1,5 @@
 @extends('layouts.app')
 @section('content')
-
-@if (Route::has('login'))
-<div>
-    @auth
-        <a href="{{ url('/funds/create') }}"></a>
-        
-    @else
-        <a href="{{ route('login') }}"></a>    
-    @endauth
-
-</div>
-@endif
 <section class="body-font text-gray-900">
     <div class="container p-12 mx-auto">
         <div class="w-11/12 mx-auto">
@@ -30,9 +18,9 @@
                         <li>{{ $error }}</li>
                     @endforeach
                 </ul>
-                </div>
-            </div>
-    @endif
+             </div>
+           </div>
+        @endif
     <form action="{{ route('funds.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="flex flex-col md:flex-wrap -mb-10 h-4/6">
@@ -44,7 +32,6 @@
                     <textarea id="description" name="description" placeholder="Write here" class="w-full h-1/2 p-3 rounded border border-gray-600 focus:border-gray-500 focus:ring-2 focus:ring-gray-200  text-base outline-none text-gray-700 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
                 </div>
             </div>
-
             <div class="mb-10  px-4 font-semibold">
                 <div class="rounded-lg h-96">
                     <label for="title" class="leading-10 text-sm text-black">Goal</label>

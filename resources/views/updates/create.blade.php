@@ -40,7 +40,7 @@
                         <input type="file" id="image" name="image" accept="image/*">
                     </div>
                     <div class="grid justify-items-end mt-5">
-                        <button class=" bg-yellow-500 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-400 rounded-lg" type="submit">Create inf</button>
+                        <button class=" bg-yellow-500 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-400 rounded-lg" type="submit">Create</button>
                     </div>
                   </div>
                </div>

@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-<!--test second commit-->
 <!--main-->
 <section class="text-gray-600 body-font bg-amber-50 p-10">
     <div class="container flex flex-wrap  py-10 w-5/6 mx-auto justify-center md:justify-between items-center">
@@ -50,6 +49,9 @@
      </div>
       <div class="flex flex-wrap -m-4">
         @forelse ($funds as $fund )
+        {{-- <div>
+          <a href="/funds/">{{ $fund->slug }}</a>
+        </div> --}}
         <div class="p-4 md:w-1/3">
           <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
             <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="{{ asset('storage/images/'.$fund->file_path)}}" alt="blog">
@@ -62,12 +64,13 @@
             </div>
           </div>
         </div>
-       
         @empty
-
+        
         @endforelse
       </div>
-     
+     <div class="my-3">
+        {{ $funds->links() }}
+      </div> 
     </div>
 </section>
 <!-- end Fund -->

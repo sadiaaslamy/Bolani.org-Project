@@ -54,13 +54,12 @@
                             <div class="grid justify-items-end my-5">
                                 <button class=" bg-yellow-500 text-white border-0 py-2 px-6 focus:outline-none hover:bg-yellow-400 rounded-lg">Update</button>
                             </div>
-                        </div>
-                        
-                    </div>
+                         </div>
+                       </div>
+                     </div>
+                   </div>
                 </div>
             </div>
-          </div>
-        </div>
-       </form>
-    </section>   
+        </form>
+     </section>   
 @endsection

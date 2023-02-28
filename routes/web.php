@@ -7,6 +7,7 @@ use App\Http\Controllers\FundController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\UpdateController;
+use App\Models\Fund;
 
 /*
 |--------------------------------------------------------------------------

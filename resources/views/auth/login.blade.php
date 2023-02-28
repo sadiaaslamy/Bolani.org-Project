@@ -1,10 +1,5 @@
 @extends('layouts.app')
 @section('content')
-<script>
-    document.getElementsByClassName("fa")[0].addEventListener("click", function(){
-        document.getElementsByClassName("links")[0].classList.toggle("mylinksshow");
-    });
-</script>
 <section class="text-gray-600 body-font">
     <div class="container px-5 py-24 mx-auto flex flex-wrap md:w-9/12">
       <div class="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">

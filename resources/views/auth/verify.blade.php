@@ -1,4 +1,4 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 @section('content')
 {{ __('Verify Your Email Address') }}
         @if (session('resent'))
@@ -12,4 +12,4 @@
             @csrf
             <button type="submit">{{ __('click here to request another') }}</button>.
         </form>           
-@endsection
+@endsection --}}

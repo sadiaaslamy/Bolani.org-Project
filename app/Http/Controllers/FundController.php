@@ -14,14 +14,13 @@ class FundController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function __construct()
-    {
-        $this->middleware('auth');
-    }
+     {
+         $this->middleware('auth');
+     }
 
     public function index()
     {
         $funds = Fund::whereUserId(auth()->user()->id)->latest()->paginate(3);
-
         return view('layouts.index', compact('funds'))->with(request()->input('page'));
     }
 
@@ -74,8 +73,8 @@ class FundController extends Controller
      */
     public function show(Fund $fund)
     {
-        if($fund->user->id!==auth()->user()->id)
-            abort(403);
+         if($fund->user->id!==auth()->user()->id)
+           abort(403);
         return view('layouts.show', compact('fund'));
     }
 

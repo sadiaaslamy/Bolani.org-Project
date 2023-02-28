@@ -35,9 +35,9 @@
                  </div>
                @endforeach
              </div>
-          <div class="my-3">
-            {{ $updates->links() }}
+             <div class="my-3">
+              {{ $updates->links() }}
+            </div>
           </div>
-        </div>
       </section>
 @endsection
