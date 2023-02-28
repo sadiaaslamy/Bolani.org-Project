@@ -40,7 +40,7 @@
                     </div>
                     <div>
                         <label for="amount" class="block m-2 text-sm font-medium text-gray-900 dark:text-white">Donate Amount</label>
-                        <input type="text"  id="amount" class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 mb-0" placeholder="Please Enter The Amount You Want To Donate" value="{{old('donateAmount')}}" name="donateAmount" placeholder="Please Enter The Amount You Want To Donate">
+                        <input type="text"  id="amount" onkeyup="amountCD(this.value);" class="shadow-sm border border-gray-300 text-gray-900 text-sm rounded focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 mb-0" placeholder="Please Enter The Amount You Want To Donate" value="{{old('donateAmount')}}" name="donateAmount" placeholder="Please Enter The Amount You Want To Donate">
                         @error('donateAmount')
                             <p class="text-red-600 m-2">{{ $message }}</p>
                         @enderror
