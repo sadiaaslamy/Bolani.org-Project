@@ -111,12 +111,12 @@
     <div class=" bg-yellow-50 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
       <div class="relative mb-4">
         <label for="number" class="leading-7 text-gray-900">How many Bolani do you want to Donate?</label>
-        <input type="text" id="number" name="number" placeholder="#Enter the number of Bolani here" class="w-full bg-yellow-50 rounded border border-black-300 focus:border-yellow-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+        <input type="text" id="number" name="number" onkeyup="mult(this.value);" placeholder="#Enter the number of Bolani here" class="w-full bg-yellow-50 rounded border border-black-300 focus:border-yellow-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
       </div>
       <p class="text-center pb-3">__________________<small>OR</small>____________________</p>
       <div class="relative mb-4">
         <label for="amount" class="leading-7 text-gray-900">How much do you want to Donate?</label>
-        <input type="email" id="amount" name="amount" placeholder="$0" class="w-full bg-yellow-50 rounded border border-black-300 focus:border-yellow-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+        <input type="amount" id="amount" name="amount" onkeyup="mult2(this.value);" placeholder="$0" class="w-full bg-yellow-50 rounded border border-black-300 focus:border-yellow-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
       </div>
       <a href="payment" class="text-gray-900 text-center bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-400 rounded text-lg">Donate <i class="fa fa-gift"></i></a>
     </div>
